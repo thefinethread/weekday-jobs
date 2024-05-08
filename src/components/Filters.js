@@ -9,21 +9,35 @@ import {
 } from '../constants/constants';
 import TextInput from './TextInput';
 
-const Filters = () => {
-  const customStyles = {
-    control: (provided) => ({
-      ...provided,
-      fontSize: '13px',
-      minHeight: '2.5rem',
-      minWidth: '8rem',
-    }),
-    menu: (provided) => ({
-      ...provided,
-      fontSize: '13px',
-      minHeight: '28px',
-      marginTop: '2px',
-      zIndex: 10,
-    }),
+const customStyles = {
+  control: (provided) => ({
+    ...provided,
+    fontSize: '13px',
+    minHeight: '2.5rem',
+    minWidth: '8rem',
+  }),
+  menu: (provided) => ({
+    ...provided,
+    fontSize: '13px',
+    minHeight: '28px',
+    marginTop: '2px',
+    zIndex: 10,
+  }),
+};
+
+const Filters = ({ handleFilterChange, selectedFilters }) => {
+  const handleExperienceFilter = (selectedOption) => {
+    handleFilterChange('experience', selectedOption);
+  };
+
+  const handleMinBasePayFilter = (selectedOption) => {
+    handleFilterChange('minBasePay', selectedOption);
+  };
+  const handleRemoteFilter = (selectedOption) => {
+    handleFilterChange('remote', selectedOption);
+  };
+  const handleRolesFilter = (selectedOption) => {
+    handleFilterChange('roles', selectedOption);
   };
 
   return (
@@ -41,6 +55,8 @@ const Filters = () => {
           placeholder='Experience'
           styles={customStyles}
           isClearable={true}
+          value={selectedFilters?.experience}
+          onChange={handleExperienceFilter}
         />
 
         <Select
@@ -49,6 +65,8 @@ const Filters = () => {
           placeholder='Remote/On-site'
           styles={customStyles}
           isClearable={true}
+          value={selectedFilters?.remote}
+          onChange={handleRemoteFilter}
         />
 
         <Select
@@ -57,6 +75,8 @@ const Filters = () => {
           placeholder='Roles'
           styles={customStyles}
           isClearable={true}
+          value={selectedFilters?.roles}
+          onChange={handleRolesFilter}
         />
         <Select
           options={minBasePayOptions}
@@ -64,6 +84,8 @@ const Filters = () => {
           placeholder='Min Base Pay'
           styles={customStyles}
           isClearable={true}
+          value={selectedFilters?.minBasePay}
+          onChange={handleMinBasePayFilter}
         />
         <TextInput placeholder='Search company name' />
         <TextInput placeholder='Search location' />

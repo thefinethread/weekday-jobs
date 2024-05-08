@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { API_URL } from '../constants/constants';
+import { API_URL, data } from '../constants/constants';
 
 const useFetchJobs = () => {
   const [jobs, setJobs] = useState([]);
@@ -23,10 +23,9 @@ const useFetchJobs = () => {
 
     const res = await fetch(API_URL, requestOptions);
 
+    setJobs((prev) => [...prev, ...data]);
     if (res.ok) {
       const { jdList, totalCount } = await res.json();
-
-      setJobs((prev) => [...prev, ...jdList]);
 
       // if (offset >= totalCount - 10) {
       //   setHasMore(false);
