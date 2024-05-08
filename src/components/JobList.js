@@ -3,11 +3,11 @@ import React from 'react';
 import { data } from '../constants/constants';
 import JobCard from './JobCard';
 
-const JobList = () => {
+const JobList = ({ jobs }) => {
   return (
     <Stack justifyContent={'center'} padding={4} alignItems={'center'}>
       <Grid sx={{}} container spacing={4}>
-        {data?.map((job) => (
+        {jobs?.map((job) => (
           <Grid
             item
             key={job.jdUid}

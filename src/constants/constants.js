@@ -1,3 +1,5 @@
+export const API_URL = 'https://api.weekday.technology/adhoc/getSampleJdJSON';
+
 export const experienceOptions = [
   { value: '0', label: '0' },
   { value: '1', label: '1' },
