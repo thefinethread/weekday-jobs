@@ -6,8 +6,11 @@ const useFetchJobs = () => {
   const [jobs, setJobs] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   const fetchJobs = () => {
+    setLoading(true);
+
     const newJobs = SAMPLE_DATA.slice(
       (page - 1) * JOBS_PER_PAGE,
       page * JOBS_PER_PAGE
@@ -15,6 +18,7 @@ const useFetchJobs = () => {
 
     if (page * JOBS_PER_PAGE >= SAMPLE_DATA.length) {
       setHasMore(false);
+      setLoading(false);
       return;
     }
 
@@ -25,6 +29,7 @@ const useFetchJobs = () => {
   return {
     jobs,
     hasMore,
+    loading,
     fetchJobs,
   };
 };

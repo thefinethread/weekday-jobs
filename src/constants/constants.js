@@ -18,9 +18,11 @@ export const REMOTE_OPTIONS = [
 ];
 
 export const ROLE_OPTIONS = [
-  { value: 'frontend-developer', label: 'Frontend Developer' },
-  { value: 'backend-developer', label: 'Backend Developer' },
-  { value: 'full-stack-developer', label: 'Full Stack Developer' },
+  { value: 'frontend', label: 'Frontend' },
+  { value: 'backend', label: 'Backend' },
+  { value: 'android', label: 'Android' },
+  { value: 'ios', label: 'Ios' },
+  { value: 'tech lead', label: 'Tech Lead' },
 ];
 
 export const MIN_BASE_PAY_OPTIONS = [

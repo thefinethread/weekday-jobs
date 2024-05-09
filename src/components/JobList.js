@@ -1,12 +1,11 @@
 import { Grid, Stack } from '@mui/material';
 import React from 'react';
-import { data } from '../constants/constants';
 import JobCard from './JobCard';
 
 const JobList = ({ jobs }) => {
   return (
     <Stack justifyContent={'center'} padding={4} alignItems={'center'}>
-      <Grid sx={{}} container spacing={4}>
+      <Grid container spacing={4}>
         {jobs?.map((job) => (
           <Grid
             item

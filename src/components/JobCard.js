@@ -3,11 +3,13 @@ import { Box, Stack, Typography, Avatar, Button } from '@mui/material';
 
 const calcSalary = (minSalary, maxSalary) => {
   const formattedMinSalary = minSalary ? `$${minSalary}k` : '';
+
   const formattedMaxSalary = maxSalary
     ? minSalary
       ? `${maxSalary}k`
       : `$${maxSalary}k`
     : '';
+
   const connector = minSalary && maxSalary ? ' - ' : '';
 
   return `${formattedMinSalary}${connector}${formattedMaxSalary} ✅` || 'N/A';
@@ -19,14 +21,9 @@ const JobCard = ({
   jobRole,
   location,
   minExp,
-  maxExp,
   minJdSalary,
   maxJdSalary,
-  salaryCurrencyCode,
-  aboutCompany,
   jobDetailsFromCompany,
-  founderRecruiterProfiles,
-  aboutRole,
 }) => {
   return (
     <Box
@@ -52,7 +49,7 @@ const JobCard = ({
       >
         <Stack direction='row' spacing={2} alignItems='center'>
           <Typography sx={{ fontSize: '10px' }} variant='caption'>
-            ⏳ Posted 19 days ago
+            ⏳ Posted 5 days ago
           </Typography>
         </Stack>
       </Box>

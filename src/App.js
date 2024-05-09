@@ -1,12 +1,14 @@
-import { Box, CircularProgress, Container, Stack } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import Filters from './components/Filters';
 import JobList from './components/JobList';
 import useFetchJobs from './hooks/useFetchJobs';
 import useFilterJobs from './hooks/useFilterJobs';
 import useInfiniteScroll from './hooks/useInfiniteScroll';
+import Message from './components/Message';
+import Spinner from './components/Spinner';
 
 const App = () => {
-  const { jobs, hasMore, fetchJobs } = useFetchJobs();
+  const { jobs, hasMore, loading, fetchJobs } = useFetchJobs();
 
   const { loaderRef } = useInfiniteScroll(fetchJobs);
 
@@ -24,16 +26,9 @@ const App = () => {
 
         <JobList jobs={filteredJobs} />
 
-        {hasMore && (
-          <Stack
-            ref={loaderRef}
-            justifyContent='center'
-            alignItems='center'
-            sx={{ padding: '14px', marginBottom: '10px' }}
-          >
-            <CircularProgress />
-          </Stack>
-        )}
+        {hasMore && loading && <Spinner loaderRef={loaderRef} />}
+
+        {!loading && <Message />}
       </Box>
     </Container>
   );
