@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { SAMPLE_DATA } from '../constants/sampleJdData';
+import { JOBS_PER_PAGE } from '../constants/constants';
 
 const useFetchJobs = () => {
   const [jobs, setJobs] = useState([]);
@@ -7,9 +8,12 @@ const useFetchJobs = () => {
   const [hasMore, setHasMore] = useState(true);
 
   const fetchJobs = () => {
-    const newJobs = SAMPLE_DATA.slice((page - 1) * 10, page * 10);
+    const newJobs = SAMPLE_DATA.slice(
+      (page - 1) * JOBS_PER_PAGE,
+      page * JOBS_PER_PAGE
+    );
 
-    if (page * 10 >= SAMPLE_DATA.length) {
+    if (page * JOBS_PER_PAGE >= SAMPLE_DATA.length) {
       setHasMore(false);
       return;
     }

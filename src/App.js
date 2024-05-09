@@ -8,10 +8,10 @@ import useInfiniteScroll from './hooks/useInfiniteScroll';
 const App = () => {
   const { jobs, hasMore, fetchJobs } = useFetchJobs();
 
-  const { filteredJobs, handleFilterChange, selectedFilters } =
-    useFilterJobs(jobs);
-
   const { loaderRef } = useInfiniteScroll(fetchJobs);
+
+  const { filteredJobs, selectedFilters, handleFilterChange, resetFilters } =
+    useFilterJobs(jobs);
 
   return (
     <Container maxWidth='1280px'>
@@ -19,6 +19,7 @@ const App = () => {
         <Filters
           selectedFilters={selectedFilters}
           handleFilterChange={handleFilterChange}
+          resetFilters={resetFilters}
         />
 
         <JobList jobs={filteredJobs} />

@@ -33,3 +33,5 @@ export const MIN_BASE_PAY_OPTIONS = [
   { value: '80000', label: '$ 80k' },
   { value: '100000', label: '$ 100k' },
 ];
+
+export const JOBS_PER_PAGE = 10;

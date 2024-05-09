@@ -25,7 +25,7 @@ const customStyles = {
   }),
 };
 
-const Filters = ({ handleFilterChange, selectedFilters }) => {
+const Filters = ({ handleFilterChange, resetFilters, selectedFilters }) => {
   const { experience, location, minBasePay, remote, roles, companyName } =
     selectedFilters;
 
@@ -112,6 +112,7 @@ const Filters = ({ handleFilterChange, selectedFilters }) => {
         />
 
         <Button
+          onClick={resetFilters}
           variant='contained'
           color='primary'
           size='medium'

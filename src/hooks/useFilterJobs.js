@@ -1,14 +1,16 @@
 import { useMemo, useState } from 'react';
 
+const initialState = {
+  experience: null,
+  minBasePay: null,
+  remote: null,
+  roles: [],
+  location: '',
+  companyName: '',
+};
+
 const useFilterJobs = (jobs) => {
-  const [selectedFilters, setSelectedFilters] = useState({
-    experience: null,
-    minBasePay: null,
-    remote: null,
-    roles: [],
-    location: '',
-    companyName: '',
-  });
+  const [selectedFilters, setSelectedFilters] = useState(initialState);
 
   const { experience, location, minBasePay, remote, roles, companyName } =
     selectedFilters;
@@ -73,7 +75,11 @@ const useFilterJobs = (jobs) => {
     [selectedFilters, jobs]
   );
 
-  return { selectedFilters, filteredJobs, handleFilterChange };
+  const resetFilters = () => {
+    setSelectedFilters(initialState);
+  };
+
+  return { selectedFilters, filteredJobs, handleFilterChange, resetFilters };
 };
 
 export default useFilterJobs;
