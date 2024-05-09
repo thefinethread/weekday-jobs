@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+## Weekday Jobs
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a candidate application platform built using ReactJS, CSS, and Material UI. It allows users to view job listings, filter jobs based on various criteria, and implements infinite scroll for a seamless browsing experience.
 
-## Available Scripts
+### Functionality
 
-In the project directory, you can run:
+- **Job Cards**: Each job listing is displayed as a card containing essential information like job title, company name, location, job description, experience required, and an apply button.
 
-### `npm start`
+- **Filters**: Users can refine job listings based on minimum experience, company name, location, remote/on-site availability, role, and minimum base pay.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Infinite Scroll**: Additional job listings are loaded automatically as the user scrolls down the page, providing a continuous browsing experience.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Deployment:
 
-### `npm test`
+The Weekday Jobs App is deployed and accessible at the following URL:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[Deployment URL](https://weekday-jobs-lac.vercel.app/)
 
-### `npm run build`
+### Tech Stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **ReactJS**: Frontend library for building user interfaces.
+- **CSS**: Styling language for designing the user interface.
+- **Custom Hooks**: For managing states and code reusability.
+- **Material UI**: React component library for implementing beautiful UI.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Mobile Responsiveness
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The application is designed to be responsive and works well on different screen sizes, including mobile devices. Responsive styles have been implemented using Material UI to ensure optimal display and usability across various devices.
 
-### `npm run eject`
+### Installation
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Clone the repository:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```bash
+   git clone https://github.com/thefinethread/weekday-jobs
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. Install dependencies:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   ```bash
+   npm install
+   ```
 
-## Learn More
+3. Start the development server:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   ```bash
+   npm start
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+4. Open your browser and visit `http://localhost:3000` to view the application.
