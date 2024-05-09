@@ -1,26 +1,26 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useState } from 'react';
 import { SAMPLE_DATA } from '../constants/sampleJdData';
 
 const useFetchJobs = () => {
   const [jobs, setJobs] = useState([]);
   const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
 
   const fetchJobs = () => {
-    console.log(page);
     const newJobs = SAMPLE_DATA.slice((page - 1) * 10, page * 10);
 
-    setJobs((prev) => [...prev, ...newJobs]);
-    setPage((prev) => {
-      return prev + 1;
-    });
-  };
+    if (page * 10 >= SAMPLE_DATA.length) {
+      setHasMore(false);
+      return;
+    }
 
-  // useEffect(() => {
-  //   fetchJobs();
-  // }, []);
+    setJobs((prev) => [...prev, ...newJobs]);
+    setPage((prev) => prev + 1);
+  };
 
   return {
     jobs,
+    hasMore,
     fetchJobs,
   };
 };

@@ -6,7 +6,7 @@ import useFilterJobs from './hooks/useFilterJobs';
 import useInfiniteScroll from './hooks/useInfiniteScroll';
 
 const App = () => {
-  const { jobs, fetchJobs } = useFetchJobs();
+  const { jobs, hasMore, fetchJobs } = useFetchJobs();
 
   const { filteredJobs, handleFilterChange, selectedFilters } =
     useFilterJobs(jobs);
@@ -23,18 +23,16 @@ const App = () => {
 
         <JobList jobs={filteredJobs} />
 
-        <Stack
-          ref={loaderRef}
-          justifyContent='center'
-          alignItems='center'
-          sx={{ padding: '14px', marginBottom: '10px', backgroundColor: 'red' }}
-        >
-          <CircularProgress />
-        </Stack>
-
-        {/* <Typography textAlign={'center'} variant='body1' sx={{ color: '#666' }}>
-          {error}
-        </Typography> */}
+        {hasMore && (
+          <Stack
+            ref={loaderRef}
+            justifyContent='center'
+            alignItems='center'
+            sx={{ padding: '14px', marginBottom: '10px' }}
+          >
+            <CircularProgress />
+          </Stack>
+        )}
       </Box>
     </Container>
   );
