@@ -12,6 +12,13 @@ export const EXPERIENCE_OPTIONS = [
   { value: '10', label: '10' },
 ];
 
+export const LOCATION_OPTIONS = [
+  { value: 'delhi ncr', label: 'Delhi Ncr' },
+  { value: 'mumbai', label: 'Mumbai' },
+  { value: 'bangalore', label: 'Bangalore' },
+  { value: 'chennai', label: 'Chennai' },
+];
+
 export const REMOTE_OPTIONS = [
   { value: 'remote', label: 'Remote' },
   { value: 'on-site', label: 'On-site' },

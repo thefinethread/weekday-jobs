@@ -17,8 +17,12 @@ const useFetchJobs = () => {
     );
 
     if (page * JOBS_PER_PAGE >= SAMPLE_DATA.length) {
+      if (page === 1) {
+        setJobs((prev) => [...prev, ...newJobs]);
+      }
       setHasMore(false);
       setLoading(false);
+
       return;
     }
 

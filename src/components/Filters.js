@@ -3,6 +3,7 @@ import { Button, Stack, Box } from '@mui/material';
 import Select from 'react-select';
 import {
   EXPERIENCE_OPTIONS,
+  LOCATION_OPTIONS,
   MIN_BASE_PAY_OPTIONS,
   REMOTE_OPTIONS,
   ROLE_OPTIONS,
@@ -26,7 +27,7 @@ const customStyles = {
 };
 
 const Filters = ({ handleFilterChange, resetFilters, selectedFilters }) => {
-  const { experience, location, minBasePay, remote, roles, companyName } =
+  const { experience, locations, minBasePay, remote, roles, companyName } =
     selectedFilters;
 
   const handleExperienceFilter = (selectedOption) => {
@@ -45,8 +46,8 @@ const Filters = ({ handleFilterChange, resetFilters, selectedFilters }) => {
     handleFilterChange('roles', selectedOption);
   };
 
-  const handleLocationFilter = (value) => {
-    handleFilterChange('location', value);
+  const handleLocationsFilter = (value) => {
+    handleFilterChange('locations', value);
   };
 
   const handleCompanyNameFilter = (value) => {
@@ -100,15 +101,19 @@ const Filters = ({ handleFilterChange, resetFilters, selectedFilters }) => {
           value={minBasePay}
           onChange={handleMinBasePayFilter}
         />
+        <Select
+          options={LOCATION_OPTIONS}
+          isMulti={true}
+          placeholder='Location'
+          styles={customStyles}
+          isClearable={true}
+          value={locations}
+          onChange={handleLocationsFilter}
+        />
         <TextInput
           placeholder='Search company name'
           value={companyName}
           onChange={handleCompanyNameFilter}
-        />
-        <TextInput
-          placeholder='Search location'
-          value={location}
-          onChange={handleLocationFilter}
         />
 
         <Button

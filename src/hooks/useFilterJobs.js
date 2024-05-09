@@ -5,14 +5,14 @@ const initialState = {
   minBasePay: null,
   remote: null,
   roles: [],
-  location: '',
+  locations: [],
   companyName: '',
 };
 
 const useFilterJobs = (jobs) => {
   const [selectedFilters, setSelectedFilters] = useState(initialState);
 
-  const { experience, location, minBasePay, remote, roles, companyName } =
+  const { experience, locations, minBasePay, remote, roles, companyName } =
     selectedFilters;
 
   const handleFilterChange = (filterName, selectedOption) => {
@@ -39,17 +39,20 @@ const useFilterJobs = (jobs) => {
     );
   };
 
+  const filteredLocations = (job) => {
+    return (
+      !locations.length ||
+      locations.some((location) =>
+        location.value.toLowerCase().includes(job.location.toLowerCase())
+      )
+    );
+  };
+
   const filteredRemote = (job) => {
     return (
       !remote ||
       (remote.value === 'remote' && job.location === 'remote') ||
       (remote.value === 'on-site' && job.location !== 'remote')
-    );
-  };
-
-  const filteredLocation = (job) => {
-    return (
-      !location || job.location.toLowerCase().includes(location.toLowerCase())
     );
   };
 
@@ -68,7 +71,7 @@ const useFilterJobs = (jobs) => {
           filteredMinBasePay(job) &&
           filteredRoles(job) &&
           filteredRemote(job) &&
-          filteredLocation(job) &&
+          filteredLocations(job) &&
           filteredCompanyName(job)
         );
       }),
