@@ -1,17 +1,11 @@
-import {
-  Box,
-  CircularProgress,
-  Container,
-  Stack,
-  Typography,
-} from '@mui/material';
+import { Box, Container } from '@mui/material';
 import Filters from './components/Filters';
 import JobList from './components/JobList';
 import useFetchJobs from './hooks/useFetchJobs';
 import useFilterJobs from './hooks/useFilterJobs';
 
 const App = () => {
-  const { jobs, error, loading } = useFetchJobs();
+  const { jobs } = useFetchJobs();
 
   const { filteredJobs, handleFilterChange, selectedFilters } =
     useFilterJobs(jobs);
@@ -26,15 +20,15 @@ const App = () => {
 
         <JobList jobs={filteredJobs} />
 
-        {loading && (
+        {/* {loading && (
           <Stack justifyContent='center' alignItems='center'>
             <CircularProgress />
           </Stack>
-        )}
+        )} */}
 
-        <Typography textAlign={'center'} variant='body1' sx={{ color: '#666' }}>
+        {/* <Typography textAlign={'center'} variant='body1' sx={{ color: '#666' }}>
           {error}
-        </Typography>
+        </Typography> */}
       </Box>
     </Container>
   );

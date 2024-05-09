@@ -2,10 +2,10 @@ import React from 'react';
 import { Button, Stack, Box } from '@mui/material';
 import Select from 'react-select';
 import {
-  experienceOptions,
-  minBasePayOptions,
-  remoteOptions,
-  roleOptions,
+  EXPERIENCE_OPTIONS,
+  MIN_BASE_PAY_OPTIONS,
+  REMOTE_OPTIONS,
+  ROLE_OPTIONS,
 } from '../constants/constants';
 import TextInput from './TextInput';
 
@@ -61,7 +61,7 @@ const Filters = ({ handleFilterChange, selectedFilters }) => {
         direction={'row'}
       >
         <Select
-          options={experienceOptions}
+          options={EXPERIENCE_OPTIONS}
           isMulti={false}
           placeholder='Experience'
           styles={customStyles}
@@ -71,7 +71,7 @@ const Filters = ({ handleFilterChange, selectedFilters }) => {
         />
 
         <Select
-          options={remoteOptions}
+          options={REMOTE_OPTIONS}
           isMulti={false}
           placeholder='Remote/On-site'
           styles={customStyles}
@@ -81,7 +81,7 @@ const Filters = ({ handleFilterChange, selectedFilters }) => {
         />
 
         <Select
-          options={roleOptions}
+          options={ROLE_OPTIONS}
           isMulti={true}
           placeholder='Roles'
           styles={customStyles}
@@ -90,7 +90,7 @@ const Filters = ({ handleFilterChange, selectedFilters }) => {
           onChange={handleRolesFilter}
         />
         <Select
-          options={minBasePayOptions}
+          options={MIN_BASE_PAY_OPTIONS}
           isMulti={false}
           placeholder='Min Base Pay'
           styles={customStyles}

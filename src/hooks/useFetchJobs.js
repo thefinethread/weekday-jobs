@@ -1,42 +1,16 @@
 import { useCallback, useEffect, useState } from 'react';
-import { API_URL, data } from '../constants/constants';
+import { SAMPLE_DATA } from '../constants/sampleJdData';
 
 const useFetchJobs = () => {
   const [jobs, setJobs] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [offset, setOffset] = useState(0);
-  const [error, setError] = useState('');
+  const [page, setPage] = useState(1);
 
-  const myHeaders = new Headers();
-  myHeaders.append('Content-Type', 'application/json');
-  const body = JSON.stringify({ limit: 10, offset });
-  const requestOptions = {
-    method: 'POST',
-    headers: myHeaders,
-    body,
-  };
+  const fetchJobs = useCallback(() => {
+    const newJobs = SAMPLE_DATA.slice((page - 1) * 10, page * 10);
 
-  const fetchJobs = useCallback(async () => {
-    if (loading) return;
-
-    setLoading(true);
-
-    const res = await fetch(API_URL, requestOptions);
-
-    setJobs((prev) => [...prev, ...data]);
-    if (res.ok) {
-      const { jdList, totalCount } = await res.json();
-
-      // if (offset >= totalCount - 10) {
-      //   setHasMore(false);
-      // }
-      setOffset((prev) => prev + 10);
-    } else {
-      setError('Something went wrong while fetching jobs!');
-    }
-
-    setLoading(false);
-  }, [loading]);
+    setJobs((prev) => [...prev, ...newJobs]);
+    setPage((prev) => prev + 1);
+  }, []);
 
   useEffect(() => {
     fetchJobs();
@@ -44,8 +18,6 @@ const useFetchJobs = () => {
 
   return {
     jobs,
-    error,
-    loading,
   };
 };
 
