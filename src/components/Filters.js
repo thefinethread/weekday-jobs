@@ -36,9 +36,11 @@ const Filters = ({ handleFilterChange, selectedFilters }) => {
   const handleMinBasePayFilter = (selectedOption) => {
     handleFilterChange('minBasePay', selectedOption);
   };
+
   const handleRemoteFilter = (selectedOption) => {
     handleFilterChange('remote', selectedOption);
   };
+
   const handleRolesFilter = (selectedOption) => {
     handleFilterChange('roles', selectedOption);
   };
