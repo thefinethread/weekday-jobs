@@ -1,14 +1,17 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 const useFilterJobs = (jobs) => {
   const [selectedFilters, setSelectedFilters] = useState({
     experience: null,
-    location: [],
     minBasePay: null,
     remote: null,
     roles: [],
+    location: '',
+    companyName: '',
   });
-  console.log(selectedFilters);
+
+  const { experience, location, minBasePay, remote, roles, companyName } =
+    selectedFilters;
 
   const handleFilterChange = (filterName, selectedOption) => {
     setSelectedFilters({
@@ -17,24 +20,58 @@ const useFilterJobs = (jobs) => {
     });
   };
 
-  const { experience, location, minBasePay, remote, roles } = selectedFilters;
-  const filteredJobs = jobs?.filter((job) => {
+  const filteredExperience = (job) => {
+    return !experience || job.minExp >= experience.value;
+  };
+
+  const filteredMinBasePay = (job) => {
+    return !minBasePay || job.minJdSalary * 1000 >= minBasePay.value;
+  };
+
+  const filteredRoles = (job) => {
     return (
-      (!experience || job.minExp >= experience.value) &&
-      (!minBasePay || job.minJdSalary * 1000 >= minBasePay.value) &&
-      (!roles.length ||
-        roles.some((role) =>
-          role.value.toLowerCase().includes(job.jobRole.toLowerCase())
-        )) &&
-      (!location.length ||
-        location.some(
-          (loc) => loc.value.toLowerCase() === job.location.toLowerCase()
-        )) &&
-      (!remote ||
-        (remote.value === 'remote' && job.location === 'remote') || // Remote filter
-        (remote.value === 'on-site' && job.location !== 'remote')) // On-site filter
+      !roles.length ||
+      roles.some((role) =>
+        role.value.toLowerCase().includes(job.jobRole.toLowerCase())
+      )
     );
-  });
+  };
+
+  const filteredRemote = (job) => {
+    return (
+      !remote ||
+      (remote.value === 'remote' && job.location === 'remote') ||
+      (remote.value === 'on-site' && job.location !== 'remote')
+    );
+  };
+
+  const filteredLocation = (job) => {
+    return (
+      !location || job.location.toLowerCase().includes(location.toLowerCase())
+    );
+  };
+
+  const filteredCompanyName = (job) => {
+    return (
+      !companyName ||
+      job.companyName.toLowerCase().includes(companyName.toLowerCase())
+    );
+  };
+
+  const filteredJobs = useMemo(
+    () =>
+      jobs?.filter((job) => {
+        return (
+          filteredExperience(job) &&
+          filteredMinBasePay(job) &&
+          filteredRoles(job) &&
+          filteredRemote(job) &&
+          filteredLocation(job) &&
+          filteredCompanyName(job)
+        );
+      }),
+    [selectedFilters, jobs]
+  );
 
   return { selectedFilters, filteredJobs, handleFilterChange };
 };

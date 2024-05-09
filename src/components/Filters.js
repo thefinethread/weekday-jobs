@@ -26,6 +26,9 @@ const customStyles = {
 };
 
 const Filters = ({ handleFilterChange, selectedFilters }) => {
+  const { experience, location, minBasePay, remote, roles, companyName } =
+    selectedFilters;
+
   const handleExperienceFilter = (selectedOption) => {
     handleFilterChange('experience', selectedOption);
   };
@@ -38,6 +41,14 @@ const Filters = ({ handleFilterChange, selectedFilters }) => {
   };
   const handleRolesFilter = (selectedOption) => {
     handleFilterChange('roles', selectedOption);
+  };
+
+  const handleLocationFilter = (value) => {
+    handleFilterChange('location', value);
+  };
+
+  const handleCompanyNameFilter = (value) => {
+    handleFilterChange('companyName', value);
   };
 
   return (
@@ -55,7 +66,7 @@ const Filters = ({ handleFilterChange, selectedFilters }) => {
           placeholder='Experience'
           styles={customStyles}
           isClearable={true}
-          value={selectedFilters?.experience}
+          value={experience}
           onChange={handleExperienceFilter}
         />
 
@@ -65,7 +76,7 @@ const Filters = ({ handleFilterChange, selectedFilters }) => {
           placeholder='Remote/On-site'
           styles={customStyles}
           isClearable={true}
-          value={selectedFilters?.remote}
+          value={remote}
           onChange={handleRemoteFilter}
         />
 
@@ -75,7 +86,7 @@ const Filters = ({ handleFilterChange, selectedFilters }) => {
           placeholder='Roles'
           styles={customStyles}
           isClearable={true}
-          value={selectedFilters?.roles}
+          value={roles}
           onChange={handleRolesFilter}
         />
         <Select
@@ -84,11 +95,19 @@ const Filters = ({ handleFilterChange, selectedFilters }) => {
           placeholder='Min Base Pay'
           styles={customStyles}
           isClearable={true}
-          value={selectedFilters?.minBasePay}
+          value={minBasePay}
           onChange={handleMinBasePayFilter}
         />
-        <TextInput placeholder='Search company name' />
-        <TextInput placeholder='Search location' />
+        <TextInput
+          placeholder='Search company name'
+          value={companyName}
+          onChange={handleCompanyNameFilter}
+        />
+        <TextInput
+          placeholder='Search location'
+          value={location}
+          onChange={handleLocationFilter}
+        />
 
         <Button
           variant='contained'
